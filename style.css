@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("heart-bg.jpg");
+    background-size: cover; /* This makes the background fit nicely */
+    font-family: "Pixelify Sans", sans-serif;
+    overflow: hidden; /* This keeps things from sliding around */
+}
+
+/* Envelope Screen */
+#envelope-container {
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Use the correct ID from your HTML. If your HTML says id="envelope-img", change this to #envelope-img */
+#envelope, #envelope-img {
+    width: 150px; /* Made it a bit smaller for phone */
+    animation: pulse 1.5s infinite;
+}
+
+#letter-container {
+    display: none;
+    position: fixed;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.letter-window {
+    width: 95vw; /* Almost the full width of phone */
+    height: 80vh; /* Takes up most of the height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url("window.png");
+    background-size: 100% 100%; /* Makes the window image stretch to fit */
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 20px;
+    box-sizing: border-box; /* Important for padding! */
+
+    transform: scale(0.6); /* Start small for the animation */
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.letter-window.open {
+    transform: scale(1);
+    opacity: 1;
+}
+
+h1 {
+    font-size: 24px; /* Smaller text for phone */
+    margin: 10px 0;
+}
+
+/* This was the one causing the big text cut-off! */
+p#final-text {
+    font-size: 20px; /* Reduced from 40px */
+    margin: 10px;
+    line-height: 1.2;
+}
+
+/* Cat */
+.cat, #letter-cat {
+    width: 180px; /* Smaller cat to save space */
+    max-height: 30vh; /* Prevents cat from being too tall */
+    object-fit: contain;
+    margin: 10px 0;
+}
+
+/* Buttons */
+.buttons, #letter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Tighter gap for phone */
+    width: 100%;
+}
+
+.btn {
+    width: 100px; /* Smaller buttons */
+    height: auto;
+}
+
+/* Added this for your sender name name */
+.sender-name {
+    font-size: 16px;
+    color: #ff4d6d;
+    margin-top: 10px;
+    font-weight: bold;
+}
